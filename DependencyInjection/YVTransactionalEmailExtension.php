@@ -26,6 +26,7 @@ class YVTransactionalEmailExtension extends Extension
         $loader->load('services.yml');
         
         $container->setParameter('yv_transactional_email.transactional_email_class', $config['transactional_email_class']);
+        $container->setParameter('yv_transactional_email.default_locale', $config['default_locale']);
         $container->setParameter('yv_transactional_email.config', $this->createConfigParameterArray($config));
         
         $container->setParameter('yv_transactional_email.crud.form.type', $config['crud']['form_type']);
@@ -39,6 +40,7 @@ class YVTransactionalEmailExtension extends Extension
     {        
         return array(
             'email' => $config['email'],
+            'default_locale' => $config['default_locale']
         );
     }    
 }

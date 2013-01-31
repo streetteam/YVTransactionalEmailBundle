@@ -72,7 +72,8 @@ All available configuration options are listed below with their default values.
 
     # app/config/config.yml
     yv_transactional_email:
-        transactional_email_class:       ~ # Required
+        transactional_email_class:      ~ # Required
+        default_locale:                 en
         service:
             transactional_email_manager:         transactional_email_manager.default
             transactional_email_mailer:          transactional_email_mailer.default

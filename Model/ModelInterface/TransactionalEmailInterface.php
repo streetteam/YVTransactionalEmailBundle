@@ -107,5 +107,20 @@ interface TransactionalEmailInterface
      *
      * @return string 
      */
-    public function getSenderName();  
+    public function getSenderName(); 
+    
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return TransactionalEmailInterface
+     */
+    public function setLocale($locale);
+
+    /**
+     * Get locale
+     *
+     * @return string 
+     */
+    public function getLocale();     
 }

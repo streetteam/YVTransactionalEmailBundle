@@ -24,6 +24,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
             ->scalarNode('transactional_email_class')->isRequired()->cannotBeEmpty()->end() 
+            ->scalarNode('default_locale')->defaultValue('en')->end()     
             ->end();
 
         $this->addServiceSection($rootNode);

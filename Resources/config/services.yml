@@ -10,6 +10,14 @@ services:
         class: YV\TransactionalEmailBundle\Mailer\Mailer
         arguments: [@yv_transactional_email.transactional_email_manager ,@swiftmailer.transport, @twig, %yv_transactional_email.config%]         
         
+    # Doctrine Listeners        
+    doctrine.transactional_email_listener:
+        class: YV\TransactionalEmailBundle\EventListener\TransactionalEmailListener
+        arguments: [%yv_transactional_email.default_locale%]
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }          
+        
     # Form Types
     transactional_email_form_type.default:
         class: YV\TransactionalEmailBundle\Form\Type\TransactionalEmailType

@@ -72,6 +72,13 @@ abstract class TransactionalEmail implements TransactionalEmailInterface
     protected $senderName; 
 
     /**
+     * The email locale
+     * 
+     * @ORM\Column(name="locale", type="string", length=10, nullable=true)
+     */
+    protected $locale;    
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -238,5 +245,28 @@ abstract class TransactionalEmail implements TransactionalEmailInterface
     public function getSenderName()
     {
         return $this->senderName;
+    }
+    
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return TransactionalEmail
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+        
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

@@ -27,9 +27,13 @@ class Mailer extends \Swift_Mailer implements MailerInterface
         $this->twig->setLoader(new \Twig_Loader_String());
     }
     
-    public function findComposeAndSend($type, $recipient, array $context = array())
+    public function findComposeAndSend($type, $recipient, array $context = array(), $locale = null)
     {
-        $transactionalEmail = $this->transactionalEmailManager->getRepository()->findOneByType($type);
+        $parameters = array(
+            'type' => $type,
+            'locale' => ($locale === null ? $this->config['default_locale'] : $locale),
+        );
+        $transactionalEmail = $this->transactionalEmailManager->getRepository()->findOneBy($parameters);
         
         if(!$transactionalEmail) {
             throw new InvalidArgumentException(sprintf('Transactional email type "%s" is not supported.', $type));

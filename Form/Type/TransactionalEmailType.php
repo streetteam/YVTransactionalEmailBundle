@@ -39,7 +39,11 @@ class TransactionalEmailType extends AbstractType
         $builder->add('senderName', 'text', array(
             'required' => false,
             'label' => 'Sender name'
-        ));          
+        ));
+        $builder->add('locale', 'text', array(
+            'required' => false,
+            'label' => 'Locale'
+        ));         
     }
 
     public function getName()
