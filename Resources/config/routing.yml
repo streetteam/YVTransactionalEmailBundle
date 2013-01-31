@@ -1,0 +1,23 @@
+yv_transactional_email_index:
+    pattern:  /
+    defaults: { _controller: YVTransactionalEmailBundle:TransactionalEmail:index }
+
+yv_transactional_email_show:
+    pattern:  /show/{id}
+    defaults: { _controller: YVTransactionalEmailBundle:TransactionalEmail:show }
+
+yv_transactional_email_create:
+    pattern:  /create
+    defaults: { _controller: YVTransactionalEmailBundle:TransactionalEmail:create }
+
+yv_transactional_email_update:
+    pattern:  /update/{id}
+    defaults: { _controller: YVTransactionalEmailBundle:TransactionalEmail:update }
+    
+yv_transactional_email_delete:
+    pattern:  /delete/{id}
+    defaults: { _controller: YVTransactionalEmailBundle:TransactionalEmail:delete }   
+    
+yv_transactional_email_test:
+    pattern:  /test/{id}
+    defaults: { _controller: YVTransactionalEmailBundle:TransactionalEmail:test }    

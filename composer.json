@@ -1,0 +1,35 @@
+{
+    "name": "yv/transactional-email-bundle",
+    "minimum-stability": "dev",
+    "description": "Email Management for Symfony2",
+    "keywords": ["email", "mailer"],
+    "homepage": "https://github.com/yourvine/YVTransactionalEmailBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Milosz Naworski"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.1",
+        "symfony/process": ">=2.1.0,<2.3-dev"
+    },
+    "require-dev": {
+        "twig/twig": "*",
+        "doctrine/doctrine-bundle": "*",
+        "swiftmailer/swiftmailer": "*",
+        "symfony/yaml": "2.1.*",
+        "symfony/validator": "2.1.*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "YV\\TransactionalEmailBundle": "" }
+    },
+    "target-dir": "YV/TransactionalEmailBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}

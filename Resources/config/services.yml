@@ -1,0 +1,17 @@
+services:
+
+    # Managers
+    transactional_email_manager.default:
+        class: YV\TransactionalEmailBundle\Model\Manager\TransactionalEmailManager
+        arguments: [@doctrine.orm.entity_manager ,@event_dispatcher, %yv_transactional_email.transactional_email_class%]  
+
+    # Mailer
+    transactional_email_mailer.default:
+        class: YV\TransactionalEmailBundle\Mailer\Mailer
+        arguments: [@yv_transactional_email.transactional_email_manager ,@swiftmailer.transport, @twig, %yv_transactional_email.config%]         
+        
+    # Form Types
+    transactional_email_form_type.default:
+        class: YV\TransactionalEmailBundle\Form\Type\TransactionalEmailType
+        tags:
+            - { name: form.type, alias: yv_transactional_email }         

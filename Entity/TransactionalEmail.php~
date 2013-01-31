@@ -1,0 +1,73 @@
+<?php
+
+namespace YV\TransactionalEmailBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use YV\TransactionalEmailBundle\Model\TransactionalEmail as BaseTransactionalEmail;
+
+/**
+ * A transactional email, which may be sent to recipients
+ * 
+ * @ORM\MappedSuperclass
+ */
+abstract class TransactionalEmail extends BaseTransactionalEmail
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * The email name
+     * 
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    protected $name;    
+    
+    /**
+     * The transactional email unique type
+     * 
+     * @ORM\Column(name="type", type="string", length=50, unique=true, nullable=false)
+     */
+    protected $type;  
+    
+    /**
+     * The email subject
+     * 
+     * @ORM\Column(name="subject", type="string", length=255, nullable=false)
+     */
+    protected $subject;  
+    
+    /**
+     * The email HTML body
+     * 
+     * @ORM\Column(name="html_body", type="text")
+     */
+    protected $htmlBody;
+    
+    /**
+     * The email text body
+     * 
+     * @ORM\Column(name="text_body", type="text")
+     */
+    protected $textBody;
+    
+    /**
+     * The email sender email address
+     * 
+     * @ORM\Column(name="sender_email", type="string", length=255, nullable=true)
+     */
+    protected $senderEmail;
+    
+    /**
+     * The email sender name
+     * 
+     * @ORM\Column(name="sender_name", type="string", length=255, nullable=true)
+     */
+    protected $senderName;         
+}

@@ -1,0 +1,21 @@
+<h1>TransactionalEmail edit</h1>
+
+<form action="{{ path('yv_transactional_email_update', { 'id': transactionalEmail.id }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Edit</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('yv_transactional_email_index') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('yv_transactional_email_delete', { 'id': transactionalEmail.id }) }}" method="post">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

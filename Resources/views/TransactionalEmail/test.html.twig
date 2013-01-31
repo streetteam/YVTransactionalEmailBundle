@@ -1,0 +1,16 @@
+<h1>TransactionalEmail test</h1>
+
+<form action="{{ path('yv_transactional_email_test', { 'id': transactionalEmail.id }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Send email</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('yv_transactional_email_index') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,61 @@
+<h1>TransactionalEmail</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ transactionalEmail.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ transactionalEmail.name }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ transactionalEmail.type }}</td>
+        </tr>
+        <tr>
+            <th>Subject</th>
+            <td>{{ transactionalEmail.subject }}</td>
+        </tr>
+        <tr>
+            <th>Htmlbody</th>
+            <td>{{ transactionalEmail.htmlBody }}</td>
+        </tr>
+        <tr>
+            <th>Textbody</th>
+            <td>{{ transactionalEmail.textBody }}</td>
+        </tr>
+        <tr>
+            <th>Senderemail</th>
+            <td>{{ transactionalEmail.senderEmail }}</td>
+        </tr>
+        <tr>
+            <th>Sendername</th>
+            <td>{{ transactionalEmail.senderName }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('yv_transactional_email_index') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('yv_transactional_email_update', { 'id': transactionalEmail.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('yv_transactional_email_test', { 'id': transactionalEmail.id }) }}">
+            Test
+        </a>
+    </li>    
+    <li>
+        <form action="{{ path('yv_transactional_email_delete', { 'id': transactionalEmail.id }) }}" method="post">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

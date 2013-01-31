@@ -1,0 +1,52 @@
+<h1>TransactionalEmail list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Subject</th>
+            <th>Htmlbody</th>
+            <th>Textbody</th>
+            <th>Senderemail</th>
+            <th>Sendername</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for transactionalEmail in transactionalEmails %}
+        <tr>
+            <td><a href="{{ path('yv_transactional_email_show', { 'id': transactionalEmail.id }) }}">{{ transactionalEmail.id }}</a></td>
+            <td>{{ transactionalEmail.name }}</td>
+            <td>{{ transactionalEmail.type }}</td>
+            <td>{{ transactionalEmail.subject }}</td>
+            <td>{{ transactionalEmail.htmlBody }}</td>
+            <td>{{ transactionalEmail.textBody }}</td>
+            <td>{{ transactionalEmail.senderEmail }}</td>
+            <td>{{ transactionalEmail.senderName }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('yv_transactional_email_show', { 'id': transactionalEmail.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('yv_transactional_email_update', { 'id': transactionalEmail.id }) }}">edit</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('yv_transactional_email_test', { 'id': transactionalEmail.id }) }}">test</a>
+                    </li>                    
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('yv_transactional_email_create') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
