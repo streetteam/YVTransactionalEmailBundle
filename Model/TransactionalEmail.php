@@ -25,7 +25,7 @@ abstract class TransactionalEmail implements TransactionalEmailInterface
     /**
      * The email name
      * 
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     protected $name;    
     
@@ -46,14 +46,14 @@ abstract class TransactionalEmail implements TransactionalEmailInterface
     /**
      * The email HTML body
      * 
-     * @ORM\Column(name="html_body", type="text")
+     * @ORM\Column(name="html_body", type="text", nullable=true)
      */
     protected $htmlBody;
     
     /**
      * The email text body
      * 
-     * @ORM\Column(name="text_body", type="text")
+     * @ORM\Column(name="text_body", type="text", nullable=true)
      */
     protected $textBody;
     
