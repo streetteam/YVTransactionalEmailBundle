@@ -141,7 +141,8 @@ class TransactionalEmailController extends Controller
     public function testAction(Request $request)
     {
         $transactionalEmail = $this->findOr404($request->get('id'));
-        $variables = $this->get('yv_transactional_email.transactional_email_type_holder')->getVariablesForType($transactionalEmail->getType());
+        $transactionalEmailTypeHolder = $this->get('yv_transactional_email.transactional_email_type_holder');
+        $variables = $transactionalEmailTypeHolder->getVariablesForType($transactionalEmail->getType());
         
         $form = $this->createForm(new TransactionalEmailTestType($variables));      
         
@@ -162,7 +163,8 @@ class TransactionalEmailController extends Controller
         
         return $this->render('YVTransactionalEmailBundle:TransactionalEmail:test.html.twig', array(
                 'form' => $form->createView(),
-                'transactionalEmail' => $transactionalEmail
+                'transactionalEmail' => $transactionalEmail,
+                'transactionalEmailTypeHolder' => $transactionalEmailTypeHolder
         ));         
     }    
     

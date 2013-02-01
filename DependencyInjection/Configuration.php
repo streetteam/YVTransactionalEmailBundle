@@ -39,7 +39,7 @@ class Configuration implements ConfigurationInterface
         $node
             ->addDefaultsIfNotSet()
             ->children()
-                ->arrayNode('service')
+                ->arrayNode('service')->isRequired()->cannotBeEmpty()->end()
                     ->addDefaultsIfNotSet()
                         ->children()
                             ->scalarNode('transactional_email_manager')->defaultValue('transactional_email_manager.default')->end()
