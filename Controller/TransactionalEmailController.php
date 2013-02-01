@@ -19,7 +19,8 @@ class TransactionalEmailController extends Controller
         $transactionalEmails = $transactionalEmailManager->getRepository()->findAll();
         
         return $this->render('YVTransactionalEmailBundle:TransactionalEmail:index.html.twig', array(
-            'transactionalEmails' => $transactionalEmails
+            'transactionalEmails' => $transactionalEmails,
+            'transactionalEmailTypeHolder' => $this->get('yv_transactional_email.transactional_email_type_holder')
         ));
     }
     
@@ -28,7 +29,8 @@ class TransactionalEmailController extends Controller
         $transactionalEmail = $this->findOr404($request->get('id'));
         
         return $this->render('YVTransactionalEmailBundle:TransactionalEmail:show.html.twig', array(
-            'transactionalEmail' => $transactionalEmail
+            'transactionalEmail' => $transactionalEmail,
+            'transactionalEmailTypeHolder' => $this->get('yv_transactional_email.transactional_email_type_holder')
         ));
     }    
     
@@ -121,7 +123,8 @@ class TransactionalEmailController extends Controller
         
         return $this->render('YVTransactionalEmailBundle:TransactionalEmail:update.html.twig', array(
                 'form' => $form->createView(),
-                'transactionalEmail' => $transactionalEmail
+                'transactionalEmail' => $transactionalEmail,
+                'transactionalEmailTypeHolder' => $this->get('yv_transactional_email.transactional_email_type_holder')
         ));         
     }    
     
@@ -138,8 +141,9 @@ class TransactionalEmailController extends Controller
     public function testAction(Request $request)
     {
         $transactionalEmail = $this->findOr404($request->get('id'));
+        $variables = $this->get('yv_transactional_email.transactional_email_type_holder')->getVariablesForType($transactionalEmail->getType());
         
-        $form = $this->createForm(new TransactionalEmailTestType);      
+        $form = $this->createForm(new TransactionalEmailTestType($variables));      
         
         if($request->isMethod('POST')) {
             $form->bind($request);
@@ -148,7 +152,9 @@ class TransactionalEmailController extends Controller
                 $data = $form->getData();
                 
                 $mailer = $this->get('yv_transactional_email.transactional_email_mailer');
-                $mailer->composeAndSend($transactionalEmail, $data['recipient']);
+                
+                $context = $this->createContext($variables, $data);
+                $mailer->composeAndSend($transactionalEmail, $data['recipient'], $context);
                 
                 return $this->redirect($this->generateUrl('yv_transactional_email_index'));
             }
@@ -170,5 +176,16 @@ class TransactionalEmailController extends Controller
         }
         
         return $transactionalEmail;
+    }
+    
+    private function createContext(array $variables, array $data)
+    {
+        $context = array();
+        
+        foreach($variables as $variable) {
+            $context[$variable] = $data[$variable];
+        }
+        
+        return $context;
     }
 }

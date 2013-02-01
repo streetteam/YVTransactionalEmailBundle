@@ -75,8 +75,9 @@ All available configuration options are listed below with their default values.
         transactional_email_class:      ~ # Required
         default_locale:                 en
         service:
+            transactional_email_type_holder:     ~ # Required
             transactional_email_manager:         transactional_email_manager.default
-            transactional_email_mailer:          transactional_email_mailer.default
+            transactional_email_mailer:          transactional_email_mailer.default           
         email:
             sending_enabled:    true
             address:            admin@example.com

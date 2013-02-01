@@ -21,5 +21,6 @@ services:
     # Form Types
     transactional_email_form_type.default:
         class: YV\TransactionalEmailBundle\Form\Type\TransactionalEmailType
+        arguments: [@yv_transactional_email.transactional_email_type_holder]
         tags:
             - { name: form.type, alias: yv_transactional_email }         

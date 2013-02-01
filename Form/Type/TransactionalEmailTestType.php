@@ -9,6 +9,13 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class TransactionalEmailTestType extends AbstractType
 {
+    protected $variables;
+    
+    public function __construct(array $variables) 
+    {
+        $this->variables = $variables;
+    }    
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('recipient', 'email', array(
@@ -18,7 +25,16 @@ class TransactionalEmailTestType extends AbstractType
                 new Email(),
                 new NotBlank()
             )
-        ));        
+        ));
+        
+        foreach($this->variables as $variable) {
+            $builder->add($variable, 'text', array(
+                'required' => true,
+                'constraints' => array(
+                    new NotBlank()
+                )
+            ));            
+        }
     }
 
     public function getName()

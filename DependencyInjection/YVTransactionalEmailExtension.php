@@ -32,6 +32,7 @@ class YVTransactionalEmailExtension extends Extension
         $container->setParameter('yv_transactional_email.crud.form.type', $config['crud']['form_type']);
         $container->setParameter('yv_transactional_email.crud.form.name', $config['crud']['form_name']);   
         
+        $container->setAlias('yv_transactional_email.transactional_email_type_holder', $config['service']['transactional_email_type_holder']);
         $container->setAlias('yv_transactional_email.transactional_email_manager', $config['service']['transactional_email_manager']);
         $container->setAlias('yv_transactional_email.transactional_email_mailer', $config['service']['transactional_email_mailer']);
     }

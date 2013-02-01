@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('transactional_email_class')->isRequired()->cannotBeEmpty()->end() 
+            ->scalarNode('transactional_email_class')->isRequired()->cannotBeEmpty()->end()     
             ->scalarNode('default_locale')->defaultValue('en')->end()     
             ->end();
 
@@ -44,6 +44,7 @@ class Configuration implements ConfigurationInterface
                         ->children()
                             ->scalarNode('transactional_email_manager')->defaultValue('transactional_email_manager.default')->end()
                             ->scalarNode('transactional_email_mailer')->defaultValue('transactional_email_mailer.default')->end()
+                            ->scalarNode('transactional_email_type_holder')->isRequired()->cannotBeEmpty()->end()
                         ->end()
                     ->end()
                 ->end()
