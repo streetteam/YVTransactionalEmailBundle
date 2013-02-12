@@ -11,4 +11,6 @@ interface TransactionalEmailTypeHolderInterface
     public function getReadableType($type);
     
     public function getVariablesForType($type);
+    
+    public function getVariables();
 }

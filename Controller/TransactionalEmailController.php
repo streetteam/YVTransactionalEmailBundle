@@ -75,7 +75,8 @@ class TransactionalEmailController extends Controller
         }
         
         return $this->render('YVTransactionalEmailBundle:TransactionalEmail:create.html.twig', array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'transactionalEmailTypeHolder' => $this->get('yv_transactional_email.transactional_email_type_holder')
         ));         
     }
     
